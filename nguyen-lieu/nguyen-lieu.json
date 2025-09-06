@@ -1,0 +1,222 @@
+[
+  {
+    "STT": 1,
+    "Món hàng": "Cá viên",
+    "Giá tiền": "38.000 đ",
+    "Khối lượng": "500gr",
+    "Thương hiệu": "CP",
+    "Số viên trên 1 đơn vi": 60,
+    "Giá cốt": "633 đ",
+    "Giá bán đề xuất trên sàn App": "1.273 đ",
+    "Giá bán lẻ đề xuất": "887 đ"
+  },
+  {
+    "STT": 2,
+    "Món hàng": "Bò viên",
+    "Giá tiền": "26.500 đ",
+    "Khối lượng": "500gr",
+    "Thương hiệu": "Anmy",
+    "Số viên trên 1 đơn vi": 70,
+    "Giá cốt": "379 đ",
+    "Giá bán đề xuất trên sàn App": "761 đ",
+    "Giá bán lẻ đề xuất": "530 đ"
+  },
+  {
+    "STT": 3,
+    "Món hàng": "Tôm viên",
+    "Giá tiền": "27.500 đ",
+    "Khối lượng": "500gr",
+    "Thương hiệu": "LC",
+    "Số viên trên 1 đơn vi": 78,
+    "Giá cốt": "353 đ",
+    "Giá bán đề xuất trên sàn App": "709 đ",
+    "Giá bán lẻ đề xuất": "494 đ"
+  },
+  {
+    "STT": 4,
+    "Món hàng": "Cá viên rau củ",
+    "Giá tiền": "29.000 đ",
+    "Khối lượng": "500gr",
+    "Thương hiệu": "Deli Foods",
+    "Số viên trên 1 đơn vi": 75,
+    "Giá cốt": "387 đ",
+    "Giá bán đề xuất trên sàn App": "777 đ",
+    "Giá bán lẻ đề xuất": "541 đ"
+  },
+  {
+    "STT": 5,
+    "Món hàng": "Hải sản mayo",
+    "Giá tiền": "41.000 đ",
+    "Khối lượng": "500gr",
+    "Thương hiệu": "O Ngon",
+    "Số viên trên 1 đơn vi": 40,
+    "Giá cốt": "1.025 đ",
+    "Giá bán đề xuất trên sàn App": "2.060 đ",
+    "Giá bán lẻ đề xuất": "1.435 đ"
+  },
+  {
+    "STT": 6,
+    "Món hàng": "Xúc xích",
+    "Giá tiền": "51.000 đ",
+    "Khối lượng": "1cay",
+    "Thương hiệu": "CP",
+    "Số viên trên 1 đơn vi": 23,
+    "Giá cốt": "2.217 đ",
+    "Giá bán đề xuất trên sàn App": "4.457 đ",
+    "Giá bán lẻ đề xuất": "3.104 đ"
+  },
+  {
+    "STT": 7,
+    "Món hàng": "Mực vien",
+    "Giá tiền": "39.000 đ",
+    "Khối lượng": "500gr",
+    "Thương hiệu": "LC",
+    "Số viên trên 1 đơn vi": 40,
+    "Giá cốt": "975 đ",
+    "Giá bán đề xuất trên sàn App": "1.960 đ",
+    "Giá bán lẻ đề xuất": "1.365 đ"
+  },
+  {
+    "STT": 8,
+    "Món hàng": "Hoồ Lô Thái",
+    "Giá tiền": "54.000 đ",
+    "Khối lượng": "500gr",
+    "Thương hiệu": "Thực phẩm xanh",
+    "Số viên trên 1 đơn vi": 48,
+    "Giá cốt": "1.125 đ",
+    "Giá bán đề xuất trên sàn App": "2.261 đ",
+    "Giá bán lẻ đề xuất": "1.575 đ"
+  },
+  {
+    "STT": 9,
+    "Món hàng": "Chả cá sò điệp",
+    "Giá tiền": "67.000 đ",
+    "Khối lượng": "500gr",
+    "Thương hiệu": "LiChuan",
+    "Số viên trên 1 đơn vi": 54,
+    "Giá cốt": "1.241 đ",
+    "Giá bán đề xuất trên sàn App": "2.494 đ",
+    "Giá bán lẻ đề xuất": "1.737 đ"
+  },
+  {
+    "STT": 10,
+    "Món hàng": "Cua viên",
+    "Giá tiền": "35.000 đ",
+    "Khối lượng": "500gr",
+    "Thương hiệu": "Phu Mark Food",
+    "Số viên trên 1 đơn vi": 36,
+    "Giá cốt": "972 đ",
+    "Giá bán đề xuất trên sàn App": "1.954 đ",
+    "Giá bán lẻ đề xuất": "1.361 đ"
+  },
+  {
+    "STT": 11,
+    "Món hàng": "Pho mai que",
+    "Giá tiền": "56.000 đ",
+    "Khối lượng": "650gr",
+    "Thương hiệu": "Phuc Minh",
+    "Số viên trên 1 đơn vi": 13,
+    "Giá cốt": "4.308 đ",
+    "Giá bán đề xuất trên sàn App": "8.658 đ",
+    "Giá bán lẻ đề xuất": "6.031 đ"
+  },
+  {
+    "STT": 12,
+    "Món hàng": "Cá viên cốm xanh",
+    "Giá tiền": "40.000 đ",
+    "Khối lượng": "500gr",
+    "Thương hiệu": "O Ngon",
+    "Số viên trên 1 đơn vi": 35,
+    "Giá cốt": "1.143 đ",
+    "Giá bán đề xuất trên sàn App": "2.297 đ",
+    "Giá bán lẻ đề xuất": "1.600 đ"
+  },
+  {
+    "STT": 13,
+    "Món hàng": "Bánh bao trứng cá",
+    "Giá tiền": "43.000 đ",
+    "Khối lượng": "500gr",
+    "Thương hiệu": "LC",
+    "Số viên trên 1 đơn vi": 33,
+    "Giá cốt": "1.303 đ",
+    "Giá bán đề xuất trên sàn App": "2.619 đ",
+    "Giá bán lẻ đề xuất": "1.824 đ"
+  },
+  {
+    "STT": 14,
+    "Món hàng": "Chả cá bọc trứng cút",
+    "Giá tiền": "30.000 đ",
+    "Khối lượng": "500gr",
+    "Thương hiệu": "Phuc Minh",
+    "Số viên trên 1 đơn vi": 22,
+    "Giá cốt": "1.364 đ",
+    "Giá bán đề xuất trên sàn App": "2.741 đ",
+    "Giá bán lẻ đề xuất": "1.909 đ"
+  },
+  {
+    "STT": 15,
+    "Món hàng": "Bánh bao trứng tôm",
+    "Giá tiền": "43.000 đ",
+    "Khối lượng": "500gr",
+    "Thương hiệu": "LC",
+    "Số viên trên 1 đơn vi": 30,
+    "Giá cốt": "1.433 đ",
+    "Giá bán đề xuất trên sàn App": "2.881 đ",
+    "Giá bán lẻ đề xuất": "2.007 đ"
+  },
+  {
+    "STT": 16,
+    "Món hàng": "Hải Sản Khoai Môn",
+    "Giá tiền": "44.000 đ",
+    "Khối lượng": "500gr",
+    "Thương hiệu": "O Ngon",
+    "Số viên trên 1 đơn vi": 40,
+    "Giá cốt": "1.100 đ",
+    "Giá bán đề xuất trên sàn App": "2.211 đ",
+    "Giá bán lẻ đề xuất": "1.540 đ"
+  },
+  {
+    "STT": 17,
+    "Món hàng": "Tôm Surimi Ô Ngon 500gr",
+    "Giá tiền": "41.500 đ",
+    "Khối lượng": "500gr",
+    "Thương hiệu": "O Ngon",
+    "Số viên trên 1 đơn vi": 30,
+    "Giá cốt": "1.383 đ",
+    "Giá bán đề xuất trên sàn App": "2.781 đ",
+    "Giá bán lẻ đề xuất": "1.937 đ"
+  },
+  {
+    "STT": 18,
+    "Món hàng": "Đậu Hũ Phô Mai",
+    "Giá tiền": "75.000 đ",
+    "Khối lượng": "500gr",
+    "Thương hiệu": "EB",
+    "Số viên trên 1 đơn vi": 25,
+    "Giá cốt": "3.000 đ",
+    "Giá bán đề xuất trên sàn App": "6.030 đ",
+    "Giá bán lẻ đề xuất": "4.200 đ"
+  },
+  {
+    "STT": 19,
+    "Món hàng": "Đậu Hũ Hải Sản",
+    "Giá tiền": "75.000 đ",
+    "Khối lượng": "500gr",
+    "Thương hiệu": "OceanRia",
+    "Số viên trên 1 đơn vi": 28,
+    "Giá cốt": "2.679 đ",
+    "Giá bán đề xuất trên sàn App": "5.384 đ",
+    "Giá bán lẻ đề xuất": "3.750 đ"
+  },
+  {
+    "STT": 20,
+    "Món hàng": "Phoô mai viên cốm xanh",
+    "Giá tiền": "45.000 đ",
+    "Khối lượng": "600gr",
+    "Thương hiệu": "Phuc Minh",
+    "Số viên trên 1 đơn vi": 35,
+    "Giá cốt": "1.286 đ",
+    "Giá bán đề xuất trên sàn App": "2.584 đ",
+    "Giá bán lẻ đề xuất": "1.800 đ"
+  }
+]
