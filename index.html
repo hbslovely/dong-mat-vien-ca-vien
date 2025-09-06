@@ -23,6 +23,8 @@
             --card-hover-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             --border-radius: 8px;
             --border-color: #e0e0e0;
+            --menu-bg-color: #ff4d00;
+            --menu-text-color: #ffffff;
         }
 
         body {
@@ -33,9 +35,9 @@
 
         /* Navbar styling */
         .sticky-top {
-            background-color: #ffffff;
-            border-bottom: 1px solid var(--border-color);
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+            background-color: var(--menu-bg-color);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.15);
         }
 
                 .header {
@@ -45,7 +47,6 @@
         .banner-container {
             max-height: 650px;
             overflow: hidden;
-            margin-bottom: 10px;
             border-bottom: 1px solid var(--border-color);
         }
 
@@ -107,14 +108,14 @@
 
         /* Menu tabs styling */
         .nav-pills {
-            background: white;
-            border: 1px solid var(--border-color);
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: var(--border-radius);
             padding: 4px;
         }
 
         .nav-pills .nav-link {
-            color: var(--text-color);
+            color: var(--menu-text-color);
             font-weight: 500;
             border-radius: 4px;
             margin: 2px;
@@ -123,12 +124,13 @@
         }
 
         .nav-pills .nav-link:hover {
-            background-color: rgba(0,0,0,0.03);
+            background-color: rgba(255, 255, 255, 0.2);
         }
 
         .nav-pills .nav-link.active {
-            background-color: var(--primary-color);
-            color: white;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: var(--menu-bg-color);
+            font-weight: 600;
         }
 
                 /* Single items specific styling */
@@ -418,6 +420,107 @@
         #menuTabContent [class^=col-] {
             margin-bottom: 24px;
         }
+
+        /* Mobile search button and expanded search */
+        .search-toggle-btn {
+            width: 40px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.3);
+            color: white;
+            border-radius: 4px;
+        }
+
+        .search-expanded {
+            display: none;
+            position: relative;
+            width: 100%;
+            padding: 0;
+            margin-right: 16px;
+        }
+
+        .search-expanded.active {
+            display: block;
+            animation: fadeIn 0.3s;
+        }
+
+        /* Styling for search input and buttons to match menu color */
+        .search-expanded .input-group-text {
+            background-color: rgba(255,255,255,0.2);
+            border-color: rgba(255,255,255,0.3);
+            color: var(--menu-text-color);
+            border-right: none;
+        }
+
+        .search-expanded .form-control {
+            background-color: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.3);
+            border-left: none;
+            color: var(--menu-text-color);
+        }
+
+        .search-expanded .form-control::placeholder {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .search-cancel {
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            padding: 0 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--menu-text-color);
+            background: none;
+            border: none;
+        }
+
+        /* Action buttons in menu */
+        .menu-action-btn {
+            background-color: rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.3);
+            color: var(--menu-text-color);
+            white-space: nowrap;
+        }
+
+        .menu-action-btn:hover {
+            background-color: rgba(255,255,255,0.3);
+            color: var(--menu-text-color);
+        }
+
+        /* Search hint message */
+        .search-hint {
+            display: none;
+            text-align: center;
+            padding: 40px 20px;
+            color: #666;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            margin: 20px 0;
+            border: 1px dashed #ddd;
+        }
+
+        .search-hint.active {
+            display: block;
+            animation: fadeIn 0.3s;
+        }
+
+        .search-hint i {
+            font-size: 24px;
+            color: #aaa;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
     </style>
 </head>
 <body>
@@ -429,31 +532,96 @@
     </header>
 
     <!-- Sticky Navigation (always visible on desktop) -->
-    <div class="sticky-top py-2 d-md-block">
+    <div class="sticky-top py-2">
         <div class="container">
-            <div class="d-flex justify-content-between align-items-center">
-                <ul class="nav nav-pills nav-fill flex-grow-1 me-3" id="stickyNav" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link active" id="sticky-combo-tab" data-bs-toggle="tab" data-bs-target="#combo" type="button" role="tab" aria-controls="combo">
-                            <i class="fas fa-utensils me-2"></i>Combo
+            <!-- Mobile view (only visible on small screens) -->
+            <div class="d-block d-md-none mb-2">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <!-- Mobile search button (initially visible) -->
+                    <button id="searchToggleBtn" class="search-toggle-btn me-2">
+                        <i class="fas fa-search"></i>
+                    </button>
+
+                    <!-- Mobile navigation (hidden when search is active) -->
+                    <ul class="nav nav-pills nav-fill flex-grow-1" id="mobileNav" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="mobile-combo-tab" data-bs-toggle="tab" data-bs-target="#combo" type="button" role="tab" aria-controls="combo">
+                                <i class="fas fa-utensils"></i><span class="d-none d-sm-inline ms-1">Combo</span>
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="mobile-single-tab" data-bs-toggle="tab" data-bs-target="#single" type="button" role="tab" aria-controls="single">
+                                <i class="fas fa-fish"></i><span class="d-none d-sm-inline ms-1">Món Lẻ</span>
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="mobile-drinks-tab" data-bs-toggle="tab" data-bs-target="#drinks" type="button" role="tab" aria-controls="drinks">
+                                <i class="fas fa-glass-cheers"></i><span class="d-none d-sm-inline ms-1">Đồ Uống</span>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Expanded search (initially hidden) -->
+                <div id="searchExpandedMobile" class="search-expanded">
+                    <div class="input-group">
+                        <span class="input-group-text">
+                            <i class="fas fa-search"></i>
+                        </span>
+                        <input type="text" id="searchMenuMobile" class="form-control py-1" placeholder="Tìm món ăn...">
+                        <button id="searchCancelMobile" class="search-cancel">
+                            <i class="fas fa-times"></i>
                         </button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="sticky-single-tab" data-bs-toggle="tab" data-bs-target="#single" type="button" role="tab" aria-controls="single">
-                            <i class="fas fa-fish me-2"></i>Món Lẻ
+                    </div>
+                </div>
+            </div>
+
+            <!-- Desktop view (only visible on medium screens and up) -->
+            <div class="d-none d-md-flex justify-content-between align-items-center">
+                <!-- Desktop navigation (hidden when search is active) -->
+                <div id="desktopNavContainer" class="d-flex flex-grow-1 me-2">
+                    <ul class="nav nav-pills nav-fill flex-grow-1" id="desktopNav" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="sticky-combo-tab" data-bs-toggle="tab" data-bs-target="#combo" type="button" role="tab" aria-controls="combo">
+                                <i class="fas fa-utensils me-2"></i>Combo
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="sticky-single-tab" data-bs-toggle="tab" data-bs-target="#single" type="button" role="tab" aria-controls="single">
+                                <i class="fas fa-fish me-2"></i>Món Lẻ
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="sticky-drinks-tab" data-bs-toggle="tab" data-bs-target="#drinks" type="button" role="tab" aria-controls="drinks">
+                                <i class="fas fa-glass-cheers me-2"></i>Đồ Uống
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Desktop search button (initially visible) -->
+                <button id="searchToggleBtnDesktop" class="search-toggle-btn me-2">
+                    <i class="fas fa-search"></i>
+                </button>
+
+                <!-- Desktop expanded search (initially hidden) -->
+                <div id="searchExpandedDesktop" class="search-expanded">
+                    <div class="input-group">
+                        <span class="input-group-text">
+                            <i class="fas fa-search"></i>
+                        </span>
+                        <input type="text" id="searchMenu" class="form-control py-1" placeholder="Tìm món ăn...">
+                        <button id="searchCancelDesktop" class="search-cancel">
+                            <i class="fas fa-times"></i>
                         </button>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="sticky-drinks-tab" data-bs-toggle="tab" data-bs-target="#drinks" type="button" role="tab" aria-controls="drinks">
-                            <i class="fas fa-glass-cheers me-2"></i>Đồ Uống
-                        </button>
-                    </li>
-                </ul>
+                    </div>
+                </div>
+
                 <div class="d-flex">
-                    <a href="https://zalo.me/0365246392" target="_blank" class="btn btn-primary me-2 d-none d-md-block">
+                    <a href="https://zalo.me/0365246392" target="_blank" class="btn menu-action-btn me-2">
                         <i class="fas fa-comment me-1"></i>Zalo
                     </a>
-                    <a href="tel:0365246392" class="btn btn-success">
+                    <a href="tel:0365246392" class="btn menu-action-btn">
                         <i class="fas fa-phone me-2"></i>Gọi Ngay
                     </a>
                 </div>
@@ -463,16 +631,11 @@
 
     <!-- Main Content -->
     <div class="container my-3">
-        <!-- Search section -->
-        <div class="row mb-4">
-            <div class="col-12">
-                <div class="input-group">
-                    <span class="input-group-text bg-white border-end-0">
-                        <i class="fas fa-search text-muted"></i>
-                    </span>
-                    <input type="text" id="searchMenu" class="form-control border-start-0" placeholder="Tìm món ăn, combo, đồ uống...">
-                </div>
-            </div>
+        <!-- Search hint message when search is active but empty -->
+        <div id="searchHint" class="search-hint">
+            <i class="fas fa-search"></i>
+            <h5>Bắt đầu tìm kiếm món ăn yêu thích</h5>
+            <p class="mb-0">Thử tìm kiếm món như "cá viên", "tôm viên" hoặc "combo"...</p>
         </div>
 
         <div class="tab-content" id="menuTabContent">
@@ -1168,7 +1331,7 @@
      <a href="tel:0365246392" class="d-md-none btn btn-lg btn-success position-fixed" style="bottom: 20px; left: 20px; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 4px; z-index: 99;">
          <i class="fas fa-phone"></i>
      </a>
-     
+
      <!-- Floating Zalo chat button for mobile -->
      <a href="https://zalo.me/0365246392" target="_blank" class="d-md-none btn btn-lg position-fixed" style="bottom: 80px; left: 20px; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 4px; z-index: 99; background-color: #0068ff; color: white;">
          <i class="fas fa-comment"></i>
@@ -1333,7 +1496,247 @@
                 }
             });
 
+            // Mobile search toggle functionality
+            const searchToggleBtn = document.getElementById('searchToggleBtn');
+            const searchExpanded = document.getElementById('searchExpandedMobile');
+            const mobileNav = document.getElementById('mobileNav');
+            const searchCancel = document.getElementById('searchCancelMobile');
+            const searchInputMobile = document.getElementById('searchMenuMobile');
 
+            // Desktop search toggle functionality
+            const searchToggleBtnDesktop = document.getElementById('searchToggleBtnDesktop');
+            const searchExpandedDesktop = document.getElementById('searchExpandedDesktop');
+            const desktopNavContainer = document.getElementById('desktopNavContainer');
+            const searchCancelDesktop = document.getElementById('searchCancelDesktop');
+            const searchInputDesktop = document.getElementById('searchMenu');
+
+            // Search hint message and menu content
+            const searchHint = document.getElementById('searchHint');
+            const menuTabContent = document.getElementById('menuTabContent');
+
+            // Track if we're in search mode
+            let isSearchActive = false;
+
+            // Function to show search hint and hide menu content
+            function showSearchMode(isSearching, hasQuery) {
+                isSearchActive = isSearching;
+
+                if (isSearching) {
+                    if (hasQuery) {
+                        // If searching with query, hide hint and show filtered results
+                        searchHint.classList.remove('active');
+                        menuTabContent.style.display = '';
+                    } else {
+                        // If search box active but empty, show hint and hide menu
+                        searchHint.classList.add('active');
+                        menuTabContent.style.display = 'none';
+                    }
+                } else {
+                    // Not in search mode, hide hint and show normal menu
+                    searchHint.classList.remove('active');
+                    menuTabContent.style.display = '';
+
+                    // Reset UI elements for exiting search mode
+                    if (searchExpanded) searchExpanded.classList.remove('active');
+                    if (searchExpandedDesktop) searchExpandedDesktop.classList.remove('active');
+                    if (mobileNav) mobileNav.style.display = 'flex';
+                    if (searchToggleBtn) searchToggleBtn.style.display = 'flex';
+                    if (desktopNavContainer) desktopNavContainer.style.display = 'flex';
+                    if (searchToggleBtnDesktop) searchToggleBtnDesktop.style.display = 'flex';
+                }
+            }
+
+            // Mobile search toggle
+            if (searchToggleBtn && searchExpanded && mobileNav) {
+                searchToggleBtn.addEventListener('click', function() {
+                    searchExpanded.classList.add('active');
+                    mobileNav.style.display = 'none';
+                    searchToggleBtn.style.display = 'none';
+                    searchInputMobile.focus(); // Auto focus on the search input
+                    showSearchMode(true, false); // Show search hint, hide menu content
+                });
+
+                searchCancel.addEventListener('click', function() {
+                    searchExpanded.classList.remove('active');
+                    mobileNav.style.display = 'flex';
+                    searchToggleBtn.style.display = 'flex';
+                    searchInputMobile.value = ''; // Clear search
+                    showSearchMode(false, false); // Exit search mode
+                    // Reset search results
+                    triggerSearchFunction('');
+                });
+
+                // Handle blur event on mobile search
+                searchInputMobile.addEventListener('blur', function() {
+                    if (this.value.trim() === '') {
+                        // If input is empty when user clicks away, exit search mode
+                        showSearchMode(false, false);
+                    }
+                    // Otherwise keep search mode active with results showing
+                });
+            }
+
+            // Desktop search toggle
+            if (searchToggleBtnDesktop && searchExpandedDesktop && desktopNavContainer) {
+                searchToggleBtnDesktop.addEventListener('click', function() {
+                    // Activate search and hide desktop nav elements
+                    searchExpandedDesktop.classList.add('active');
+                    searchExpandedDesktop.style.width = '100%';
+                    desktopNavContainer.style.display = 'none';
+                    searchToggleBtnDesktop.style.display = 'none';
+
+                    // Make sure we hide the menu tabs completely on desktop
+                    document.querySelectorAll('.nav-pills').forEach(nav => {
+                        if (!nav.id.includes('mobile')) {
+                            nav.style.display = 'none';
+                        }
+                    });
+
+                    searchInputDesktop.focus(); // Auto focus on the search input
+                    showSearchMode(true, false); // Show search hint, hide menu content
+                });
+
+                searchCancelDesktop.addEventListener('click', function() {
+                    // Deactivate search and restore desktop nav elements
+                    searchExpandedDesktop.classList.remove('active');
+                    desktopNavContainer.style.display = 'flex';
+                    searchToggleBtnDesktop.style.display = 'flex';
+
+                    // Show menu tabs on desktop again
+                    document.querySelectorAll('.nav-pills').forEach(nav => {
+                        if (!nav.id.includes('mobile')) {
+                            nav.style.display = '';
+                        }
+                    });
+
+                    searchInputDesktop.value = ''; // Clear search
+                    showSearchMode(false, false); // Exit search mode
+                    // Reset search results
+                    triggerSearchFunction('');
+                });
+
+                // Handle blur event on desktop search
+                searchInputDesktop.addEventListener('blur', function() {
+                    if (this.value.trim() === '') {
+                        // If input is empty when user clicks away, exit search mode
+                        showSearchMode(false, false);
+
+                        // Show menu tabs on desktop again
+                        document.querySelectorAll('.nav-pills').forEach(nav => {
+                            if (!nav.id.includes('mobile')) {
+                                nav.style.display = '';
+                            }
+                        });
+
+                        // Restore desktop nav container
+                        if (desktopNavContainer) desktopNavContainer.style.display = 'flex';
+                        if (searchToggleBtnDesktop) searchToggleBtnDesktop.style.display = 'flex';
+                    }
+                    // Otherwise keep search mode active with results showing
+                });
+            }
+
+            // Connect the mobile search field to the desktop one
+            const searchMenuDesktop = document.getElementById('searchMenu');
+            const searchMenuMobile = document.getElementById('searchMenuMobile');
+
+            // Keep search fields in sync
+            if (searchMenuDesktop && searchMenuMobile) {
+                searchMenuDesktop.addEventListener('input', function() {
+                    searchMenuMobile.value = this.value;
+                    const hasQuery = this.value.trim() !== '';
+                    showSearchMode(true, hasQuery); // Update search mode based on input
+                    triggerSearchFunction(this.value);
+                });
+
+                searchMenuMobile.addEventListener('input', function() {
+                    searchMenuDesktop.value = this.value;
+                    const hasQuery = this.value.trim() !== '';
+                    showSearchMode(true, hasQuery); // Update search mode based on input
+                    triggerSearchFunction(this.value);
+                });
+
+                // Function to handle search functionality
+                function triggerSearchFunction(searchTerm) {
+                    const searchValue = searchTerm.trim().toLowerCase();
+                    let resultsFound = false;
+
+                    // Show all tabs to search across all content
+                    if (searchValue) {
+                        document.querySelectorAll('.tab-pane').forEach(tab => {
+                            tab.classList.add('show', 'active');
+                        });
+                    } else {
+                        // If search term is empty, only show the active tab
+                        document.querySelectorAll('.tab-pane').forEach(tab => {
+                            const activeTabControl = document.querySelector('.nav-link.active').getAttribute('aria-controls');
+                            if (!tab.id.includes(activeTabControl)) {
+                                tab.classList.remove('show', 'active');
+                            }
+                        });
+                    }
+
+                    // Remove any existing no results message
+                    const existingMessages = document.querySelectorAll('.no-results-message');
+                    existingMessages.forEach(msg => msg.remove());
+
+                    const allCards = document.querySelectorAll('.card');
+                    allCards.forEach(card => {
+                        const cardTitle = card.querySelector('.card-title').textContent.toLowerCase();
+                        const cardText = card.querySelector('.card-text')?.textContent.toLowerCase() || '';
+                        const ingredients = Array.from(card.querySelectorAll('.ingredient-list li')).map(li => li.textContent.toLowerCase()).join(' ');
+
+                        const cardContent = cardTitle + ' ' + cardText + ' ' + ingredients;
+
+                        if (searchValue === '' || cardContent.includes(searchValue)) {
+                            card.closest('[class*="col-"]').style.display = '';
+                            resultsFound = true;
+                        } else {
+                            card.closest('[class*="col-"]').style.display = 'none';
+                        }
+                    });
+
+                    // Handle section headers visibility
+                    if (searchValue) {
+                        const sectionHeaders = document.querySelectorAll('.section-header');
+                        let anySectionHasResults = false;
+
+                        sectionHeaders.forEach(header => {
+                            let nextSibling = header.nextElementSibling;
+                            let hasVisibleCards = false;
+
+                            while (nextSibling && !nextSibling.classList.contains('section-header')) {
+                                if (nextSibling.classList.contains('row')) {
+                                    const visibleCards = Array.from(nextSibling.querySelectorAll('[class*="col-"]'))
+                                        .filter(col => col.style.display !== 'none');
+
+                                    if (visibleCards.length > 0) {
+                                        hasVisibleCards = true;
+                                        anySectionHasResults = true;
+                                        break;
+                                    }
+                                }
+                                nextSibling = nextSibling.nextElementSibling;
+                            }
+
+                            header.style.display = hasVisibleCards ? '' : 'none';
+                        });
+
+                        // Show global "no results" message if nothing found
+                        if (!anySectionHasResults) {
+                            const noResultsMessage = document.createElement('div');
+                            noResultsMessage.className = 'col-12 text-center py-5 my-4 no-results-message';
+                            noResultsMessage.innerHTML = '<h3>Không tìm thấy kết quả phù hợp</h3><p>Vui lòng thử tìm kiếm với từ khóa khác</p>';
+                            document.querySelector('#menuTabContent').appendChild(noResultsMessage);
+                        }
+                    } else {
+                        // When search is cleared, show all section headers
+                        document.querySelectorAll('.section-header').forEach(header => {
+                            header.style.display = '';
+                        });
+                    }
+                }
+            }
         });
     </script>
 </body>
