@@ -479,6 +479,24 @@
             border: none;
         }
 
+        /* External cancel button for desktop */
+        .search-cancel-external {
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(255,255,255,0.2);
+            border: 1px solid rgba(255,255,255,0.3);
+            color: var(--menu-text-color);
+            border-radius: 4px;
+            margin-left: 8px;
+        }
+
+        .search-cancel-external:hover {
+            background-color: rgba(255,255,255,0.3);
+        }
+
         /* Action buttons in menu */
         .menu-action-btn {
             background-color: rgba(255,255,255,0.2);
@@ -568,7 +586,7 @@
                             <i class="fas fa-search"></i>
                         </span>
                         <input type="text" id="searchMenuMobile" class="form-control py-1" placeholder="Tìm món ăn...">
-                        <button id="searchCancelMobile" class="search-cancel">
+                        <button type="button" id="searchCancelMobile" class="search-cancel">
                             <i class="fas fa-times"></i>
                         </button>
                     </div>
@@ -610,7 +628,7 @@
                             <i class="fas fa-search"></i>
                         </span>
                         <input type="text" id="searchMenu" class="form-control py-1" placeholder="Tìm món ăn...">
-                        <button id="searchCancelDesktop" class="search-cancel">
+                        <button type="button" id="searchCancelDesktop" class="search-cancel-external">
                             <i class="fas fa-times"></i>
                         </button>
                     </div>
@@ -1345,13 +1363,34 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Function to scroll to top of page
+            function scrollToTop() {
+                window.scrollTo({
+                    top: 650,
+                });
+            }
+
             // Menu tabs synchronization
             const menuTabs = document.querySelectorAll('#menuTab button');
-            const stickyTabs = document.querySelectorAll('#stickyNav button');
+            const stickyTabs = document.querySelectorAll('#stickyNav button, #mobileNav button, #desktopNav button');
+            // Attach scroll to top to ALL tab buttons to ensure it works
+            document.querySelectorAll('button[data-bs-toggle="tab"]').forEach(tab => {
+                tab.addEventListener('mousedown', function() {
+                    scrollToTop();
+                });
+            });
+
+            // Also use Bootstrap's tab show event which is more reliable
+            document.querySelectorAll('button[data-bs-toggle="tab"]').forEach(tab => {
+                tab.addEventListener('shown.bs.tab', function() {
+                    scrollToTop();
+                });
+            });
 
             // Sync main menu tabs with sticky tabs (for mobile)
             menuTabs.forEach((tab, index) => {
                 tab.addEventListener('click', () => {
+                    scrollToTop(); // Ensure scroll to top happens
                     if (stickyTabs[index]) {
                         stickyTabs[index].classList.add('active');
                         stickyTabs.forEach((t, i) => {
@@ -1364,6 +1403,7 @@
             // Sync sticky tabs with main menu tabs
             stickyTabs.forEach((tab, index) => {
                 tab.addEventListener('click', () => {
+                    scrollToTop(); // Ensure scroll to top happens
                     // Update mobile menu tabs if they exist
                     if (menuTabs[index]) {
                         menuTabs[index].classList.add('active');
@@ -1555,7 +1595,8 @@
                     showSearchMode(true, false); // Show search hint, hide menu content
                 });
 
-                searchCancel.addEventListener('click', function() {
+                searchCancel.addEventListener('click', function(e) {
+                    e.preventDefault(); // Prevent default button behavior
                     searchExpanded.classList.remove('active');
                     mobileNav.style.display = 'flex';
                     searchToggleBtn.style.display = 'flex';
@@ -1595,7 +1636,8 @@
                     showSearchMode(true, false); // Show search hint, hide menu content
                 });
 
-                searchCancelDesktop.addEventListener('click', function() {
+                searchCancelDesktop.addEventListener('click', function(e) {
+                    e.preventDefault(); // Prevent default button behavior
                     // Deactivate search and restore desktop nav elements
                     searchExpandedDesktop.classList.remove('active');
                     desktopNavContainer.style.display = 'flex';
@@ -1659,6 +1701,11 @@
                 function triggerSearchFunction(searchTerm) {
                     const searchValue = searchTerm.trim().toLowerCase();
                     let resultsFound = false;
+
+                    // Scroll to top when searching
+                    if (searchValue !== '') {
+                        scrollToTop();
+                    }
 
                     // Function to remove Vietnamese diacritics (accents)
                     function removeAccents(str) {
@@ -1751,6 +1798,13 @@
                     }
                 }
             }
+
+            // Add event listeners to tabs to scroll to top when clicked
+            document.querySelectorAll('.nav-link').forEach(tab => {
+                tab.addEventListener('click', function() {
+                    scrollToTop();
+                });
+            });
         });
     </script>
 </body>
