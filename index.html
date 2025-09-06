@@ -623,11 +623,13 @@
 
                 <!-- Desktop expanded search (initially hidden) -->
                 <div id="searchExpandedDesktop" class="search-expanded">
-                    <div class="input-group">
-                        <span class="input-group-text">
-                            <i class="fas fa-search"></i>
-                        </span>
-                        <input type="text" id="searchMenu" class="form-control py-1" placeholder="Tìm món ăn...">
+                    <div class="d-flex align-items-center">
+                        <div class="input-group">
+                            <span class="input-group-text">
+                                <i class="fas fa-search"></i>
+                            </span>
+                            <input type="text" id="searchMenu" class="form-control py-1" placeholder="Tìm món ăn...">
+                        </div>
                         <button type="button" id="searchCancelDesktop" class="search-cancel-external">
                             <i class="fas fa-times"></i>
                         </button>
@@ -1602,8 +1604,15 @@
                     searchToggleBtn.style.display = 'flex';
                     searchInputMobile.value = ''; // Clear search
                     showSearchMode(false, false); // Exit search mode
+
                     // Reset search results
                     triggerSearchFunction('');
+
+                    // Switch to first tab (Combo)
+                    const firstTab = document.querySelector('#mobile-combo-tab');
+                    if (firstTab) {
+                        firstTab.click();
+                    }
                 });
 
                 // Handle blur event on mobile search
@@ -1652,8 +1661,15 @@
 
                     searchInputDesktop.value = ''; // Clear search
                     showSearchMode(false, false); // Exit search mode
+
                     // Reset search results
                     triggerSearchFunction('');
+
+                    // Switch to first tab (Combo)
+                    const firstTab = document.querySelector('#sticky-combo-tab');
+                    if (firstTab) {
+                        firstTab.click();
+                    }
                 });
 
                 // Handle blur event on desktop search
