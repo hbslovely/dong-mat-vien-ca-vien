@@ -3,221 +3,486 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu Cá Viên - Hải Sản Ngon Tuyệt</title>
+    <meta name="description" content="Cá viên chiên - Ăn vặt ngon tại Quận 6 - Động Mật Viên. Đa dạng hải sản, combo hấp dẫn, giờ mở cửa 18-22 giờ hằng ngày.">
+    <title>Cá viên chiên - Ăn vặt - Động Mật Viên</title>
+    <link rel="icon" href="logo/logo.png" type="image/png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
         :root {
-            --primary-color: #ff6b6b;
-            --secondary-color: #4ecdc4;
-            --accent-color: #ffd166;
-            --text-color: #2f3542;
+            --primary-color: #ff5722;
+            --secondary-color: #2196f3;
+            --accent-color: #ffc107;
+            --text-color: #333333;
             --light-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --card-hover-color: #f5f5f5;
+            --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+            --card-hover-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            --border-radius: 8px;
+            --border-color: #e0e0e0;
         }
-        
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', sans-serif;
             color: var(--text-color);
-            background-color: #f5f5f5;
+            background-color: #f9f9f9;
         }
-        
-        .header {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            padding: 20px 0;
-            border-bottom: 5px solid var(--accent-color);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+        /* Navbar styling */
+        .sticky-top {
+            background-color: #ffffff;
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
         }
-        
-        .avatar {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 5px solid white;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            object-fit: cover;
+
+                .header {
+            margin-bottom: 0;
         }
-        
-        .shop-name {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-top: 10px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+
+        .banner-container {
+            max-height: 650px;
+            overflow: hidden;
+            margin-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
         }
-        
+
         .shopee-btn {
             background-color: #ee4d2d;
             color: white;
             border: none;
             padding: 10px 20px;
-            border-radius: 30px;
+            border-radius: 0;
             font-weight: 600;
             transition: all 0.3s;
-            box-shadow: 0 4px 8px rgba(238, 77, 45, 0.3);
+            position: relative;
         }
-        
+
         .shopee-btn:hover {
             background-color: #d73211;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(238, 77, 45, 0.4);
             color: white;
         }
-        
+
         .section-title {
             position: relative;
             font-size: 1.8rem;
-            font-weight: 700;
+            font-weight: 600;
             padding-bottom: 10px;
             margin-top: 40px;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             text-align: center;
-            color: var(--primary-color);
+            color: var(--text-color);
         }
-        
+
         .section-title::after {
             content: "";
             position: absolute;
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background-color: var(--accent-color);
-            border-radius: 2px;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-color);
         }
-        
+
+                .section-header {
+            text-align: center;
+            margin-bottom: 35px;
+            margin-top: 40px;
+        }
+
+        .section-subtitle {
+            color: #757575;
+            font-size: 1rem;
+            margin-top: 8px;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .tab-pane .row:first-child {
+            margin-top: 10px;
+        }
+
+        /* Menu tabs styling */
+        .nav-pills {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: 4px;
+        }
+
+        .nav-pills .nav-link {
+            color: var(--text-color);
+            font-weight: 500;
+            border-radius: 4px;
+            margin: 2px;
+            padding: 10px 16px;
+            transition: all 0.2s ease;
+        }
+
+        .nav-pills .nav-link:hover {
+            background-color: rgba(0,0,0,0.03);
+        }
+
+        .nav-pills .nav-link.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+                /* Single items specific styling */
+        #single .card-body {
+            padding-bottom: 20px;
+        }
+
+        #single .card {
+            margin-bottom: 28px;
+        }
+
+        /* Card styling */
         .card {
-            border: none;
-            border-radius: 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 0;
             overflow: hidden;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s;
-            margin-bottom: 25px;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+            margin-bottom: 24px;
+            background: var(--card-bg);
+            height: 100%;
         }
-        
+
+        [class*="col-"] {
+            padding-left: 12px;
+            padding-right: 12px;
+        }
+
+        .row {
+            margin-left: -12px;
+            margin-right: -12px;
+            margin-bottom: 15px;
+        }
+
+        #combo .card {
+            border-left: 3px solid var(--primary-color);
+        }
+
+        #single .card {
+            border-left: 3px solid var(--secondary-color);
+        }
+
+        #drinks .card {
+            border-left: 3px solid #4caf50;
+        }
+
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            transform: translateY(-3px);
+            box-shadow: var(--card-hover-shadow);
+            background: var(--card-hover-color);
         }
-        
+
         .card-img-top {
-            height: 200px;
+            height: 160px;
             object-fit: cover;
+            transition: transform 0.3s ease;
         }
-        
+
+        .card:hover .card-img-top {
+            transform: scale(1.03);
+        }
+
+                .card-body {
+            padding: 1.25rem;
+            position: relative;
+            line-height: 1.5;
+        }
+
         .card-title {
-            font-weight: 700;
-            font-size: 1.4rem;
-            color: var(--primary-color);
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--text-color);
+            margin-bottom: 8px;
+            line-height: 1.4;
         }
-        
+
+        .card-text {
+            margin-bottom: 10px;
+            line-height: 1.5;
+            margin-top: 0;
+        }
+
+        .card-body p {
+            margin-bottom: 6px;
+            line-height: 1.5;
+            margin-top: 0;
+        }
+
+        .card-body p:last-child {
+            margin-bottom: 3px;
+        }
+
         .price-tag {
             background-color: var(--accent-color);
             color: var(--text-color);
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-weight: 600;
             display: inline-block;
-            margin: 8px 0;
+            margin: 8px 0 15px;
         }
-        
+
+
+
         .original-price {
             text-decoration: line-through;
-            color: #6c757d;
+            color: #757575;
             font-size: 0.9rem;
             margin-left: 5px;
+            font-weight: normal;
         }
-        
-        .ingredient-list {
+
+                .ingredient-list {
             list-style-type: none;
             padding-left: 0;
+            margin-top: 18px;
+            margin-bottom: 10px;
         }
-        
+
         .ingredient-list li {
-            margin-bottom: 5px;
+            margin-bottom: 10px;
             position: relative;
             padding-left: 25px;
+            font-size: 0.95rem;
+            line-height: 1.5;
         }
-        
+
         .ingredient-list li::before {
             content: "🔸";
             position: absolute;
             left: 0;
+            top: 1px;
         }
-        
+
+                /* Footer styling */
         .footer {
-            background-color: var(--text-color);
-            color: white;
-            padding: 30px 0;
-            margin-top: 50px;
+            background-color: #1C1800;
+            color: #fff;
+            padding: 40px 0 20px;
+            margin-top: 60px;
+            border-top: 1px solid #4A3F00;
         }
-        
-        .contact-info {
-            margin-bottom: 0;
+
+        .footer h4 {
+            font-size: 1.2rem;
+            margin-bottom: 16px;
+            font-weight: 600;
+            color: #FFEA80;
+        }
+
+                .contact-info {
+            margin-bottom: 10px;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-info i {
+            margin-right: 10px;
+            color: #FFEA80;
+            font-size: 1.1em;
+            width: 20px;
+            text-align: center;
+        }
+
+        .footer a {
+            color: #fff;
+            text-decoration: none;
+            border-bottom: 1px dotted rgba(255,255,255,0.5);
+        }
+
+        .footer a:hover {
+            color: #FFEA80;
+            border-bottom-color: #FFEA80;
         }
 
         .badge-special {
-            background-color: var(--primary-color);
-            color: white;
+            background-color: var(--accent-color);
+            color: var(--text-color);
             padding: 3px 8px;
-            border-radius: 10px;
+            border-radius: 4px;
             font-size: 0.8rem;
-            margin-left: 5px;
+            margin-left: 8px;
+            font-weight: 500;
         }
 
         .tab-content {
             padding-top: 20px;
         }
-        
-        .nav-pills .nav-link.active {
-            background-color: var(--primary-color);
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .card-img-top {
+                height: 160px;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .shop-name {
+                font-size: 2rem;
+            }
+
+            .avatar {
+                width: 120px;
+                height: 120px;
+            }
         }
-        
-        .nav-pills .nav-link {
+
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            border-radius: 4px;
+            background: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.2s ease;
+            z-index: 99;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background: var(--secondary-color);
+        }
+
+        /* Social icons */
+        .social-icons {
+            display: flex;
+            align-items: center;
+        }
+
+                .social-icon {
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 4px;
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #fff !important;
+            margin-right: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .social-icon:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* QR container */
+        .qr-container {
+            transition: all 0.2s ease;
+            border: 1px solid #FFEA80;
+            background-color: #fff;
+        }
+
+        .qr-container:hover {
+            border-color: #fff;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+        }
+
+        /* Featured badges */
+        .features-list .badge {
+            font-size: 0.85rem;
+            padding: 6px 10px;
+            margin: 0 4px 8px 0;
+            background-color: #f0f0f0;
             color: var(--text-color);
-            font-weight: 600;
+            border: 1px solid var(--border-color);
+        }
+
+        #menuTabContent [class^=col-] {
+            margin-bottom: 24px;
         }
     </style>
 </head>
 <body>
     <!-- Header Section -->
-    <header class="header text-center">
-        <div class="container">
-            <img src="images/01-ca-vien.png" alt="Logo Cá Viên" class="avatar">
-            <h1 class="shop-name">Cá Viên & Hải Sản Ngon Tuyệt</h1>
-            <p class="lead mb-4">Đa dạng hải sản - Nhiều combo hấp dẫn - Giá cả phải chăng</p>
-            <a href="https://shopeefood.vn/now-food/shop/1000090724" target="_blank" class="btn shopee-btn">
-                <i class="fas fa-shopping-bag me-2"></i>Đặt ngay trên ShopeeFood
-            </a>
+    <header class="header">
+        <div class="banner-container">
+            <img src="logo/banner.png" alt="Banner" class="img-fluid w-100">
         </div>
     </header>
 
+    <!-- Sticky Navigation (always visible on desktop) -->
+    <div class="sticky-top py-2 d-md-block">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+                <ul class="nav nav-pills nav-fill flex-grow-1 me-3" id="stickyNav" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="sticky-combo-tab" data-bs-toggle="tab" data-bs-target="#combo" type="button" role="tab" aria-controls="combo">
+                            <i class="fas fa-utensils me-2"></i>Combo
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="sticky-single-tab" data-bs-toggle="tab" data-bs-target="#single" type="button" role="tab" aria-controls="single">
+                            <i class="fas fa-fish me-2"></i>Món Lẻ
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="sticky-drinks-tab" data-bs-toggle="tab" data-bs-target="#drinks" type="button" role="tab" aria-controls="drinks">
+                            <i class="fas fa-glass-cheers me-2"></i>Đồ Uống
+                        </button>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <a href="https://zalo.me/0365246392" target="_blank" class="btn btn-primary me-2 d-none d-md-block">
+                        <i class="fas fa-comment me-1"></i>Zalo
+                    </a>
+                    <a href="tel:0365246392" class="btn btn-success">
+                        <i class="fas fa-phone me-2"></i>Gọi Ngay
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Main Content -->
-    <div class="container my-5">
-        <!-- Menu Tabs -->
-        <ul class="nav nav-pills nav-fill mb-3" id="menuTab" role="tablist">
-            <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="combo-tab" data-bs-toggle="tab" data-bs-target="#combo" type="button" role="tab" aria-controls="combo" aria-selected="true">
-                    <i class="fas fa-utensils me-2"></i>Combo Hấp Dẫn
-                </button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="single-tab" data-bs-toggle="tab" data-bs-target="#single" type="button" role="tab" aria-controls="single" aria-selected="false">
-                    <i class="fas fa-fish me-2"></i>Món Lẻ & Topping
-                </button>
-            </li>
-            <li class="nav-item" role="presentation">
-                <button class="nav-link" id="drinks-tab" data-bs-toggle="tab" data-bs-target="#drinks" type="button" role="tab" aria-controls="drinks" aria-selected="false">
-                    <i class="fas fa-glass-cheers me-2"></i>Đồ Uống
-                </button>
-            </li>
-        </ul>
+    <div class="container my-3">
+        <!-- Search section -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="input-group">
+                    <span class="input-group-text bg-white border-end-0">
+                        <i class="fas fa-search text-muted"></i>
+                    </span>
+                    <input type="text" id="searchMenu" class="form-control border-start-0" placeholder="Tìm món ăn, combo, đồ uống...">
+                </div>
+            </div>
+        </div>
 
         <div class="tab-content" id="menuTabContent">
             <!-- Combo Tab -->
             <div class="tab-pane fade show active" id="combo" role="tabpanel" aria-labelledby="combo-tab">
-                <h2 class="section-title">Combo Đặc Biệt</h2>
-                
+                <div class="section-header">
+                    <h2 class="section-title">Combo Đặc Biệt</h2>
+                    <p class="section-subtitle">Lựa chọn hoàn hảo cho nhóm bạn và gia đình</p>
+                </div>
+
                 <div class="row">
                     <!-- Combo Nhâm Nhi -->
                     <div class="col-md-6 col-lg-4">
@@ -225,7 +490,7 @@
                             <img src="images/01-ca-vien.png" class="card-img-top" alt="Combo Nhâm Nhi">
                             <div class="card-body">
                                 <h5 class="card-title">🍜 Combo Nhâm Nhi</h5>
-                                <div class="price-tag">28,665 đ <span class="original-price">32,000 đ</span></div>
+                                <div class="price-tag">32,000 đ <span class="original-price">33,600 đ</span></div>
                                 <p class="card-text">Set nhỏ gọn với cá viên, bò viên và tôm viên đủ vị cùng đậu bắp chiên giòn. Phù hợp 1-2 người.</p>
                                 <div class="mt-3">
                                     <strong>Thành phần chính:</strong>
@@ -239,14 +504,14 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Combo Tiệc Trà -->
                     <div class="col-md-6 col-lg-4">
                         <div class="card">
                             <img src="images/03-tom-vien.png" class="card-img-top" alt="Combo Tiệc Trà">
                             <div class="card-body">
                                 <h5 class="card-title">🥤 Combo Tiệc Trà <span class="badge badge-special">Kèm nước</span></h5>
-                                <div class="price-tag">120,000 đ <span class="original-price">135,000 đ</span></div>
+                                <div class="price-tag">120,000 đ <span class="original-price">126,000 đ</span></div>
                                 <p class="card-text">Combo tiện lợi kèm nước uống cho nhóm bạn 2-3 người với đa dạng hải sản và 3 đồ uống.</p>
                                 <div class="mt-3">
                                     <strong>Thành phần chính:</strong>
@@ -260,14 +525,14 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Combo Đại Dương -->
                     <div class="col-md-6 col-lg-4">
                         <div class="card">
                             <img src="images/05-hai-san-mayonaise.png" class="card-img-top" alt="Combo Đại Dương">
                             <div class="card-body">
                                 <h5 class="card-title">🌊 Combo Đại Dương</h5>
-                                <div class="price-tag">89,100 đ <span class="original-price">99,000 đ</span></div>
+                                <div class="price-tag">89,000 đ <span class="original-price">93,450 đ</span></div>
                                 <p class="card-text">Trọn bộ hải sản mayo, chả cá sò điệp, cua viên, tôm viên kèm bánh bao trứng cá. Phù hợp 2-3 người.</p>
                                 <div class="mt-3">
                                     <strong>Thành phần chính:</strong>
@@ -288,7 +553,7 @@
                             <img src="images/08-ho-lo-thai.png" class="card-img-top" alt="Combo Tụ Tập">
                             <div class="card-body">
                                 <h5 class="card-title">🎉 Combo Tụ Tập</h5>
-                                <div class="price-tag">152,650 đ <span class="original-price">169,000 đ</span></div>
+                                <div class="price-tag">153,000 đ <span class="original-price">160,650 đ</span></div>
                                 <p class="card-text">Đại tiệc với cá viên, bò viên, mực viên, hồ lô Thái, hải sản khoai môn và xúc xích. Phù hợp 4-6 người.</p>
                                 <div class="mt-3">
                                     <strong>Thành phần chính:</strong>
@@ -302,14 +567,14 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Combo Chiên Giòn -->
                     <div class="col-md-6 col-lg-4">
                         <div class="card">
                             <img src="images/12-ca-vien-com-xanh.png" class="card-img-top" alt="Combo Chiên Giòn">
                             <div class="card-body">
                                 <h5 class="card-title">🔥 Combo Chiên Giòn</h5>
-                                <div class="price-tag">122,950 đ <span class="original-price">135,900 đ</span></div>
+                                <div class="price-tag">123,000 đ <span class="original-price">129,150 đ</span></div>
                                 <p class="card-text">Set chiên giòn vàng rụm với cá viên, bò viên, mực, chả cá, bánh bao và phô mai que. Phù hợp 3-4 người.</p>
                                 <div class="mt-3">
                                     <strong>Thành phần chính:</strong>
@@ -323,14 +588,14 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Combo Phô Mai Tan Chảy -->
                     <div class="col-md-6 col-lg-4">
                         <div class="card">
                             <img src="images/11-pho-mai-que.png" class="card-img-top" alt="Combo Phô Mai Tan Chảy">
                             <div class="card-body">
                                 <h5 class="card-title">🧀 Combo Phô Mai Tan Chảy</h5>
-                                <div class="price-tag">101,600 đ <span class="original-price">112,000 đ</span></div>
+                                <div class="price-tag">102,000 đ <span class="original-price">107,100 đ</span></div>
                                 <p class="card-text">Kết hợp phô mai que, cá viên cốm xanh, đậu hũ phô mai và phô mai viên cốm xanh béo ngậy. Phù hợp 2-3 người.</p>
                                 <div class="mt-3">
                                     <strong>Thành phần chính:</strong>
@@ -346,7 +611,10 @@
                     </div>
                 </div>
 
-                <h2 class="section-title">Combo Thập Cẩm</h2>
+                <div class="section-header">
+                    <h2 class="section-title">Combo Thập Cẩm</h2>
+                    <p class="section-subtitle">Đa dạng hải sản trong một set, phù hợp mọi lứa tuổi</p>
+                </div>
                 <div class="row">
                     <!-- Combo Thập Cẩm Mini -->
                     <div class="col-md-6 col-lg-4">
@@ -354,7 +622,7 @@
                             <img src="images/10-cua-vien.png" class="card-img-top" alt="Combo Thập Cẩm Mini">
                             <div class="card-body">
                                 <h5 class="card-title">🍱 Combo Thập Cẩm Mini</h5>
-                                <div class="price-tag">34,590 đ <span class="original-price">38,900 đ</span></div>
+                                <div class="price-tag">35,000 đ <span class="original-price">36,750 đ</span></div>
                                 <p class="card-text">Set đa dạng 10 loại hải sản, mỗi loại 2 viên. Phù hợp 1-2 người thưởng thức.</p>
                                 <div class="mt-3">
                                     <strong>Thành phần:</strong>
@@ -363,14 +631,14 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Combo Thập Cẩm Vừa -->
                     <div class="col-md-6 col-lg-4">
                         <div class="card">
                             <img src="images/09-cha-ca-so-diep.png" class="card-img-top" alt="Combo Thập Cẩm Vừa">
                             <div class="card-body">
                                 <h5 class="card-title">🍲 Combo Thập Cẩm Vừa</h5>
-                                <div class="price-tag">86,150 đ <span class="original-price">96,000 đ</span></div>
+                                <div class="price-tag">86,000 đ <span class="original-price">90,300 đ</span></div>
                                 <p class="card-text">Set phong phú với 15 loại hải sản đặc trưng. Phù hợp cho 2-3 người.</p>
                                 <div class="mt-3">
                                     <strong>Thành phần:</strong>
@@ -379,14 +647,14 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Combo Thập Cẩm Đại -->
                     <div class="col-md-6 col-lg-4">
                         <div class="card">
                             <img src="images/13-banh-bao-trung-ca.png" class="card-img-top" alt="Combo Thập Cẩm Đại">
                             <div class="card-body">
                                 <h5 class="card-title">🎊 Combo Thập Cẩm Đại</h5>
-                                <div class="price-tag">224,115 đ <span class="original-price">249,000 đ</span></div>
+                                <div class="price-tag">224,000 đ <span class="original-price">235,200 đ</span></div>
                                 <p class="card-text">Bữa tiệc hải sản hoành tráng với 20 loại hải sản đặc sắc. Phù hợp nhóm 3-5 người.</p>
                                 <div class="mt-3">
                                     <strong>Thành phần:</strong>
@@ -397,11 +665,14 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Món Lẻ & Topping Tab -->
             <div class="tab-pane fade" id="single" role="tabpanel" aria-labelledby="single-tab">
-                <h2 class="section-title">Các Món Lẻ</h2>
-                
+                <div class="section-header">
+                    <h2 class="section-title">Các Món Lẻ</h2>
+                    <p class="section-subtitle">Lựa chọn tự do theo món yêu thích của bạn</p>
+                </div>
+
                 <div class="row">
                     <!-- Cá viên chiên -->
                     <div class="col-md-6 col-lg-3">
@@ -409,55 +680,266 @@
                             <img src="images/01-ca-vien.png" class="card-img-top" alt="Cá viên chiên">
                             <div class="card-body">
                                 <h5 class="card-title">🍤 Cá viên chiên</h5>
-                                <div class="price-tag">1,085 đ/viên</div>
+                                <div class="price-tag">2,000 đ/viên <span class="original-price">2,100 đ</span></div>
                                 <p class="card-text">Cá viên được chiên giòn, thơm ngon.</p>
-                                <p><strong>Combo:</strong> 10 viên - 10,850 đ</p>
+                                <p class="mt-2"><strong>Combo:</strong> 10 viên - 15,000 đ <span style="font-size: 0.8rem;">(tiết kiệm 5%)</span></p>
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Bò viên chiên -->
                     <div class="col-md-6 col-lg-3">
                         <div class="card h-100">
                             <img src="images/02-bo-vien.png" class="card-img-top" alt="Bò viên chiên">
                             <div class="card-body">
                                 <h5 class="card-title">🥩 Bò viên chiên</h5>
-                                <div class="price-tag">800 đ/viên</div>
+                                <div class="price-tag">1,200 đ/viên</div>
                                 <p class="card-text">Bò viên chiên vàng, đậm đà.</p>
-                                <p><strong>Combo:</strong> 10 viên - 8,000 đ</p>
+                                <p><strong>Combo:</strong> 10 viên - 9,000 đ</p>
                             </div>
                         </div>
                     </div>
-                    
+
+                    <!-- Tôm viên -->
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card h-100">
+                            <img src="images/03-tom-vien.png" class="card-img-top" alt="Tôm viên">
+                            <div class="card-body">
+                                <h5 class="card-title">🦐 Tôm viên</h5>
+                                <div class="price-tag">1,100 đ/viên</div>
+                                <p class="card-text">Tôm viên dai ngon, thơm mùi tôm tự nhiên.</p>
+                                <p><strong>Combo:</strong> 10 viên - 8,500 đ</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cá viên rau củ -->
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card h-100">
+                            <img src="images/04-ca-vien-rau-cu.png" class="card-img-top" alt="Cá viên rau củ">
+                            <div class="card-body">
+                                <h5 class="card-title">🥕 Cá viên rau củ</h5>
+                                <div class="price-tag">1,200 đ/viên</div>
+                                <p class="card-text">Cá viên kết hợp với rau củ, vừa ngon vừa bổ dưỡng.</p>
+                                <p><strong>Combo:</strong> 10 viên - 9,000 đ</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hải sản mayo -->
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card h-100">
+                            <img src="images/05-hai-san-mayonaise.png" class="card-img-top" alt="Hải sản mayo">
+                            <div class="card-body">
+                                <h5 class="card-title">🦪 Hải sản mayo</h5>
+                                <div class="price-tag">3,200 đ/viên</div>
+                                <p class="card-text">Viên hải sản thơm béo với sốt mayo.</p>
+                                <p><strong>Combo:</strong> 10 viên - 25,000 đ</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Xúc xích -->
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card h-100">
+                            <img src="images/06-xuc-xich.png" class="card-img-top" alt="Xúc xích">
+                            <div class="card-body">
+                                <h5 class="card-title">🌭 Xúc xích</h5>
+                                <div class="price-tag">7,200 đ/cây</div>
+                                <p class="card-text">Xúc xích thơm ngon, đậm đà hương vị.</p>
+                                <p><strong>Combo:</strong> 3 cây - 16,500 đ</p>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Mực viên chiên -->
                     <div class="col-md-6 col-lg-3">
                         <div class="card h-100">
                             <img src="images/07-muc-vien.png" class="card-img-top" alt="Mực viên chiên">
                             <div class="card-body">
-                                <h5 class="card-title">🦑 Mực viên chiên</h5>
-                                <div class="price-tag">1,500 đ/viên</div>
+                                <h5 class="card-title">🦑 Mực viên</h5>
+                                <div class="price-tag">3,100 đ/viên</div>
                                 <p class="card-text">Mực viên chiên giòn, dai ngon.</p>
-                                <p><strong>Combo:</strong> 10 viên - 15,000 đ</p>
+                                <p><strong>Combo:</strong> 10 viên - 24,000 đ</p>
                             </div>
                         </div>
                     </div>
-                    
+
+                    <!-- Hồ lô Thái -->
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card h-100">
+                            <img src="images/08-ho-lo-thai.png" class="card-img-top" alt="Hồ lô Thái">
+                            <div class="card-body">
+                                <h5 class="card-title">🌿 Hồ lô Thái</h5>
+                                <div class="price-tag">3,500 đ/viên</div>
+                                <p class="card-text">Hồ lô thái với vị cay nồng đặc trưng.</p>
+                                <p><strong>Combo:</strong> 10 viên - 27,000 đ</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chả cá sò điệp -->
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card h-100">
+                            <img src="images/09-cha-ca-so-diep.png" class="card-img-top" alt="Chả cá sò điệp">
+                            <div class="card-body">
+                                <h5 class="card-title">🐠 Chả cá sò điệp</h5>
+                                <div class="price-tag">3,800 đ/viên</div>
+                                <p class="card-text">Chả cá kết hợp với sò điệp thơm ngon.</p>
+                                <p><strong>Combo:</strong> 10 viên - 30,000 đ</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cua viên -->
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card h-100">
+                            <img src="images/10-cua-vien.png" class="card-img-top" alt="Cua viên">
+                            <div class="card-body">
+                                <h5 class="card-title">🦀 Cua viên</h5>
+                                <div class="price-tag">3,100 đ/viên</div>
+                                <p class="card-text">Cua viên thơm ngon với hương vị đặc trưng.</p>
+                                <p><strong>Combo:</strong> 10 viên - 24,000 đ</p>
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- Phô mai que -->
                     <div class="col-md-6 col-lg-3">
                         <div class="card h-100">
                             <img src="images/11-pho-mai-que.png" class="card-img-top" alt="Phô mai que">
                             <div class="card-body">
                                 <h5 class="card-title">🧀 Phô mai que</h5>
-                                <div class="price-tag">8,658 đ/cây</div>
+                                <div class="price-tag">13,900 đ/cây</div>
                                 <p class="card-text">Phô mai que chiên giòn bên ngoài, béo ngậy bên trong.</p>
-                                <p><strong>Combo:</strong> 3 cây - 25,000 đ</p>
+                                <p><strong>Combo:</strong> 3 cây - 32,000 đ</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cá viên cốm xanh -->
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card h-100">
+                            <img src="images/12-ca-vien-com-xanh.png" class="card-img-top" alt="Cá viên cốm xanh">
+                            <div class="card-body">
+                                <h5 class="card-title">🌿 Cá viên cốm xanh</h5>
+                                <div class="price-tag">3,600 đ/viên</div>
+                                <p class="card-text">Cá viên cốm xanh với hương vị đặc trưng.</p>
+                                <p><strong>Combo:</strong> 10 viên - 28,000 đ</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bánh bao trứng cá -->
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card h-100">
+                            <img src="images/13-banh-bao-trung-ca.png" class="card-img-top" alt="Bánh bao trứng cá">
+                            <div class="card-body">
+                                <h5 class="card-title">🥟 Bánh bao trứng cá</h5>
+                                <div class="price-tag">4,200 đ/cái</div>
+                                <p class="card-text">Bánh bao nhân trứng cá thơm ngon.</p>
+                                <p><strong>Combo:</strong> 5 cái - 16,000 đ</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chả cá bọc trứng cút -->
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card h-100">
+                            <img src="images/14-cha-ca-boc-trung-cut.png" class="card-img-top" alt="Chả cá bọc trứng cút">
+                            <div class="card-body">
+                                <h5 class="card-title">🥚 Chả cá bọc trứng cút</h5>
+                                <div class="price-tag">4,500 đ/viên</div>
+                                <p class="card-text">Chả cá bọc trứng cút thơm ngon.</p>
+                                <p><strong>Combo:</strong> 5 viên - 16,500 đ</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bánh bao trứng tôm -->
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card h-100">
+                            <img src="images/15-banh-bao-trung-tom.png" class="card-img-top" alt="Bánh bao trứng tôm">
+                            <div class="card-body">
+                                <h5 class="card-title">🍤 Bánh bao trứng tôm</h5>
+                                <div class="price-tag">4,500 đ/cái</div>
+                                <p class="card-text">Bánh bao nhân trứng tôm thơm ngon.</p>
+                                <p><strong>Combo:</strong> 5 cái - 17,000 đ</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Hải sản khoai môn -->
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card h-100">
+                            <img src="images/16-hai-san-khoai-mon.png" class="card-img-top" alt="Hải sản khoai môn">
+                            <div class="card-body">
+                                <h5 class="card-title">🥔 Hải sản khoai môn</h5>
+                                <div class="price-tag">3,500 đ/viên</div>
+                                <p class="card-text">Hải sản kết hợp với khoai môn thơm ngon.</p>
+                                <p><strong>Combo:</strong> 10 viên - 26,500 đ</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tôm Surimi -->
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card h-100">
+                            <img src="images/17-tom-surimi.png" class="card-img-top" alt="Tôm Surimi">
+                            <div class="card-body">
+                                <h5 class="card-title">🦞 Tôm Surimi</h5>
+                                <div class="price-tag">4,500 đ/viên</div>
+                                <p class="card-text">Tôm Surimi thơm ngon với hương vị đặc trưng.</p>
+                                <p><strong>Combo:</strong> 10 viên - 33,000 đ</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Đậu hũ phô mai -->
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card h-100">
+                            <img src="images/18-dau-hu-pho-mai.png" class="card-img-top" alt="Đậu hũ phô mai">
+                            <div class="card-body">
+                                <h5 class="card-title">🍲 Đậu hũ phô mai</h5>
+                                <div class="price-tag">9,500 đ/cái</div>
+                                <p class="card-text">Đậu hũ nhân phô mai béo ngậy.</p>
+                                <p><strong>Combo:</strong> 5 cái - 36,000 đ</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Đậu hũ hải sản -->
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card h-100">
+                            <img src="images/19-dau-hu-hai-san.png" class="card-img-top" alt="Đậu hũ hải sản">
+                            <div class="card-body">
+                                <h5 class="card-title">🐙 Đậu hũ hải sản</h5>
+                                <div class="price-tag">8,500 đ/cái</div>
+                                <p class="card-text">Đậu hũ nhân hải sản thơm ngon.</p>
+                                <p><strong>Combo:</strong> 5 cái - 32,000 đ</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Phô mai viên cốm xanh -->
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card h-100">
+                            <img src="images/20-pho-mai-vien-com-xanh.png" class="card-img-top" alt="Phô mai viên cốm xanh">
+                            <div class="card-body">
+                                <h5 class="card-title">🧀 Phô mai viên cốm xanh</h5>
+                                <div class="price-tag">4,100 đ/viên</div>
+                                <p class="card-text">Phô mai viên với cốm xanh thơm ngon.</p>
+                                <p><strong>Combo:</strong> 10 viên - 31,000 đ</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <h2 class="section-title">Topping & Sốt</h2>
-                
+                <div class="section-header">
+                    <h2 class="section-title">Topping & Sốt</h2>
+                    <p class="section-subtitle">Thêm hương vị với sốt và topping đa dạng</p>
+                </div>
+
                 <div class="row">
                     <!-- Sốt mắm tỏi -->
                     <div class="col-md-6 col-lg-3">
@@ -469,7 +951,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Sốt mayo -->
                     <div class="col-md-6 col-lg-3">
                         <div class="card h-100">
@@ -480,7 +962,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Đậu bắp chiên -->
                     <div class="col-md-6 col-lg-3">
                         <div class="card h-100">
@@ -491,7 +973,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Dưa leo -->
                     <div class="col-md-6 col-lg-3">
                         <div class="card h-100">
@@ -504,45 +986,48 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Đồ Uống Tab -->
             <div class="tab-pane fade" id="drinks" role="tabpanel" aria-labelledby="drinks-tab">
-                <h2 class="section-title">Đồ Uống</h2>
-                
+                <div class="section-header">
+                    <h2 class="section-title">Đồ Uống</h2>
+                    <p class="section-subtitle">Giải khát cùng đồ uống tươi mát</p>
+                </div>
+
                 <div class="row">
                     <!-- Coca-Cola -->
                     <div class="col-md-6 col-lg-3">
                         <div class="card h-100">
                             <div class="card-body">
                                 <h5 class="card-title">🥤 Coca-Cola</h5>
-                                <div class="price-tag">14,000 đ</div>
+                                <div class="price-tag">15,000 đ</div>
                                 <p class="card-text">Chai 330ml, kèm tẩy đá.</p>
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Pepsi -->
                     <div class="col-md-6 col-lg-3">
                         <div class="card h-100">
                             <div class="card-body">
                                 <h5 class="card-title">🥤 Pepsi</h5>
-                                <div class="price-tag">14,000 đ</div>
+                                <div class="price-tag">15,000 đ</div>
                                 <p class="card-text">Chai 330ml, kèm tẩy đá.</p>
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- Trà đào -->
+
+                    <!-- Sting dâu -->
                     <div class="col-md-6 col-lg-3">
                         <div class="card h-100">
                             <div class="card-body">
-                                <h5 class="card-title">🍑 Trà đào</h5>
-                                <div class="price-tag">20,000 đ</div>
-                                <p class="card-text">Ly 350ml, thơm ngon giải khát.</p>
+                                <h5 class="card-title">🍓 Sting dâu</h5>
+                                <div class="price-tag">15,000 đ</div>
+                                <p class="card-text">Chai 330ml, kèm tẩy đá.</p>
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Bò húc -->
                     <div class="col-md-6 col-lg-3">
                         <div class="card h-100">
@@ -553,40 +1038,54 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Nước suối -->
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title">💧 Nước suối</h5>
+                                <div class="price-tag">10,000 đ</div>
+                                <p class="card-text">Chai 500ml.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                
-                <h2 class="section-title">Combo Đồ Uống</h2>
-                
+
+                <div class="section-header">
+                    <h2 class="section-title">Combo Đồ Uống</h2>
+                    <p class="section-subtitle">Tiết kiệm hơn với combo nước</p>
+                </div>
+
                 <div class="row">
                     <!-- 2 lon nước -->
                     <div class="col-md-6 col-lg-4">
                         <div class="card h-100">
                             <div class="card-body">
                                 <h5 class="card-title">🥤 2 lon nước ngọt</h5>
-                                <div class="price-tag">25,000 đ <span class="original-price">28,000 đ</span></div>
+                                <div class="price-tag">28,000 đ <span class="original-price">29,400 đ</span></div>
                                 <p class="card-text">2 lon nước bất kỳ (trừ bò húc).</p>
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- 4 lon nước -->
                     <div class="col-md-6 col-lg-4">
                         <div class="card h-100">
                             <div class="card-body">
                                 <h5 class="card-title">🥤 4 lon nước ngọt</h5>
-                                <div class="price-tag">48,000 đ <span class="original-price">55,000 đ</span></div>
+                                <div class="price-tag">55,000 đ <span class="original-price">57,750 đ</span></div>
                                 <p class="card-text">4 lon nước bất kỳ (trừ bò húc).</p>
                             </div>
                         </div>
                     </div>
-                    
+
                     <!-- Combo gia đình -->
                     <div class="col-md-6 col-lg-4">
                         <div class="card h-100">
                             <div class="card-body">
                                 <h5 class="card-title">🍹 Combo gia đình</h5>
-                                <div class="price-tag">60,000 đ <span class="original-price">69,000 đ</span></div>
-                                <p class="card-text">2 nước ngọt + 2 trà + 1 nước suối.</p>
+                                <div class="price-tag">65,000 đ <span class="original-price">68,250 đ</span></div>
+                                <p class="card-text">3 nước ngọt + 1 bò húc + 1 nước suối.</p>
                             </div>
                         </div>
                     </div>
@@ -599,33 +1098,244 @@
     <footer class="footer">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6">
-                    <h4>Thông tin liên hệ</h4>
-                    <p class="contact-info"><i class="fas fa-phone me-2"></i> Hotline: 0123 456 789</p>
-                    <p class="contact-info"><i class="fas fa-clock me-2"></i> Giờ mở cửa: 10:00 - 22:00 (Hàng ngày)</p>
-                    <p class="contact-info"><i class="fas fa-map-marker-alt me-2"></i> Địa chỉ: 123 Đường ABC, Quận XYZ, TP. HCM</p>
+                <div class="col-lg-5">
+                    <h4><i class="fas fa-info-circle me-2"></i>Thông tin liên hệ</h4>
+                    <p class="contact-info"><i class="fas fa-phone"></i> Hotline: <a href="tel:0365246392" class="text-white">0365 246 392</a> (phone/zalo)</p>
+                    <p class="contact-info"><i class="fas fa-clock"></i> Giờ mở cửa: <span class="badge bg-success">18-22 giờ hằng ngày</span></p>
+                    <p class="contact-info"><i class="fas fa-map-marker-alt"></i> Địa chỉ: <a href="https://maps.app.goo.gl/TBD" target="_blank" class="text-white">Quận 6, TP. HCM</a></p>
+
+
                 </div>
-                <div class="col-lg-6 text-lg-end">
-                    <h4>Đặt hàng qua</h4>
-                    <div class="mt-3">
-                        <a href="https://shopeefood.vn/now-food/shop/1000090724" target="_blank" class="btn shopee-btn">
-                            <i class="fas fa-shopping-bag me-2"></i>ShopeeFood
+
+                <div class="col-lg-3 mt-4 mt-lg-0">
+                    <h4><i class="fas fa-shopping-cart me-2"></i>Đặt hàng</h4>
+                    <div class="mb-3">
+                        <a href="https://shopeefood.vn/now-food/shop/1000090724" target="_blank" class="btn w-100" style="background-color: #ee4d2d; color: #fff; border: none;">
+                            <i class="fas fa-shopping-bag me-2"></i>Đặt qua ShopeeFood
                         </a>
                     </div>
-                    <div class="mt-3">
-                        <p>Theo dõi chúng tôi</p>
-                        <a href="#" class="text-white me-3"><i class="fab fa-facebook fa-2x"></i></a>
-                        <a href="#" class="text-white me-3"><i class="fab fa-instagram fa-2x"></i></a>
-                        <a href="#" class="text-white me-3"><i class="fab fa-tiktok fa-2x"></i></a>
+                    <div class="mb-3">
+                        <a href="tel:0365246392" class="btn w-100" style="background-color: #FFEA80; color: #AA8F00; border: none; font-weight: 600;">
+                            <i class="fas fa-phone me-2"></i>Gọi đặt hàng
+                        </a>
+                    </div>
+                    <div class="mb-4">
+                        <a href="https://www.facebook.com/cavienchien.dongmatvien.quan6/" target="_blank" class="btn w-100" style="background-color: #3b5998; color: #fff; border: none;">
+                            <i class="fab fa-facebook me-2"></i>Nhắn tin Facebook
+                        </a>
                     </div>
                 </div>
+
+                <div class="col-lg-4 mt-4 mt-lg-0">
+                    <h4><i class="fas fa-qrcode me-2"></i>Quét mã đặt hàng</h4>
+                    <p>Quét QR để đặt hàng qua shopee food nè</p>
+                    <div class="qr-container p-3 text-center" style="max-width: 180px;">
+                        <img src="logo/qrcode.png" alt="QR Code" class="img-fluid">
+                        <p class="mt-2 mb-0 text-dark fw-bold">ShopeeFood</p>
+                    </div>
+
+                    <div class="mt-4">
+                        <h4><i class="fas fa-share-alt me-2"></i>Theo dõi chúng tôi</h4>
+                        <div class="social-icons">
+                            <a href="https://www.facebook.com/cavienchien.dongmatvien.quan6/" target="_blank" class="text-white me-3 social-icon">
+                                <i class="fab fa-facebook fa-2x"></i>
+                            </a>
+                            <a href="https://shopeefood.vn/now-food/shop/1000090724" target="_blank" class="text-white me-3 social-icon">
+                                <i class="fas fa-shopping-bag fa-2x"></i>
+                            </a>
+                            <a href="https://zalo.me/0365246392" target="_blank" class="text-white me-3 social-icon">
+                                <i class="fas fa-comment fa-2x"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                          </div>
+
+              <hr class="mt-4 mb-3" style="background-color: rgba(255,255,255,0.3); border: 0; height: 1px;">
+
+              <div class="row">
+                <div class="col-md-6">
+                    <p class="mb-md-0">© 2025 Cá viên chiên - Ăn vặt - Động Mật Viên. Tất cả quyền được bảo lưu.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0">Cập nhật lần cuối: Tháng 9/2025</p>
+                </div>
             </div>
-            <hr class="mt-4 mb-3" style="background-color: rgba(255,255,255,0.2);">
-            <p class="text-center mb-0">© 2023 Cá Viên & Hải Sản Ngon Tuyệt. Tất cả quyền được bảo lưu.</p>
         </div>
     </footer>
 
+         <!-- Floating order button for mobile -->
+     <a href="tel:0365246392" class="d-md-none btn btn-lg btn-success position-fixed" style="bottom: 20px; left: 20px; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 4px; z-index: 99;">
+         <i class="fas fa-phone"></i>
+     </a>
+     
+     <!-- Floating Zalo chat button for mobile -->
+     <a href="https://zalo.me/0365246392" target="_blank" class="d-md-none btn btn-lg position-fixed" style="bottom: 80px; left: 20px; width: 50px; height: 50px; display: flex; align-items: center; justify-content: center; border-radius: 4px; z-index: 99; background-color: #0068ff; color: white;">
+         <i class="fas fa-comment"></i>
+     </a>
+
+    <!-- Back to top button -->
+    <div class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Menu tabs synchronization
+            const menuTabs = document.querySelectorAll('#menuTab button');
+            const stickyTabs = document.querySelectorAll('#stickyNav button');
+
+            // Sync main menu tabs with sticky tabs (for mobile)
+            menuTabs.forEach((tab, index) => {
+                tab.addEventListener('click', () => {
+                    if (stickyTabs[index]) {
+                        stickyTabs[index].classList.add('active');
+                        stickyTabs.forEach((t, i) => {
+                            if (i !== index) t.classList.remove('active');
+                        });
+                    }
+                });
+            });
+
+            // Sync sticky tabs with main menu tabs
+            stickyTabs.forEach((tab, index) => {
+                tab.addEventListener('click', () => {
+                    // Update mobile menu tabs if they exist
+                    if (menuTabs[index]) {
+                        menuTabs[index].classList.add('active');
+                        menuTabs.forEach((t, i) => {
+                            if (i !== index) t.classList.remove('active');
+                        });
+                    }
+
+                    // Directly handle tab panes
+                    const targetTabId = tab.getAttribute('data-bs-target').substring(1);
+                    document.querySelectorAll('.tab-pane').forEach(tabPane => {
+                        if (tabPane.id === targetTabId) {
+                            tabPane.classList.add('show', 'active');
+                        } else {
+                            tabPane.classList.remove('show', 'active');
+                        }
+                    });
+                });
+            });
+
+            // Back to top button
+            const backToTopButton = document.querySelector('.back-to-top');
+
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    backToTopButton.classList.add('active');
+                } else {
+                    backToTopButton.classList.remove('active');
+                }
+            });
+
+            backToTopButton.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+
+
+
+            // Search functionality
+            const searchInput = document.getElementById('searchMenu');
+            const allCards = document.querySelectorAll('.card');
+            const noResultsMessage = document.createElement('div');
+            noResultsMessage.className = 'col-12 text-center py-5 my-4';
+            noResultsMessage.innerHTML = '<h3>Không tìm thấy kết quả phù hợp</h3><p>Vui lòng thử tìm kiếm với từ khóa khác</p>';
+
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.trim().toLowerCase();
+                let resultsFound = false;
+
+                // Show all tabs to search across all content
+                if (searchTerm) {
+                    document.querySelectorAll('.tab-pane').forEach(tab => {
+                        tab.classList.add('show', 'active');
+                    });
+                } else {
+                    // If search term is empty, only show the active tab
+                    document.querySelectorAll('.tab-pane').forEach(tab => {
+                        const activeTabControl = document.querySelector('.nav-link.active').getAttribute('aria-controls');
+                        if (!tab.id.includes(activeTabControl)) {
+                            tab.classList.remove('show', 'active');
+                        }
+                    });
+                }
+
+                // Remove any existing no results message
+                const existingMessages = document.querySelectorAll('.no-results-message');
+                existingMessages.forEach(msg => msg.remove());
+
+                allCards.forEach(card => {
+                    const cardTitle = card.querySelector('.card-title').textContent.toLowerCase();
+                    const cardText = card.querySelector('.card-text')?.textContent.toLowerCase() || '';
+                    const ingredients = Array.from(card.querySelectorAll('.ingredient-list li')).map(li => li.textContent.toLowerCase()).join(' ');
+
+                    const cardContent = cardTitle + ' ' + cardText + ' ' + ingredients;
+
+                    if (searchTerm === '' || cardContent.includes(searchTerm)) {
+                        card.closest('[class*="col-"]').style.display = '';
+                        resultsFound = true;
+                    } else {
+                        card.closest('[class*="col-"]').style.display = 'none';
+                    }
+                });
+
+                // Handle section headers visibility and single no results message
+                if (searchTerm) {
+                    // Get all section headers
+                    const sectionHeaders = document.querySelectorAll('.section-header');
+                    let anySectionHasResults = false;
+
+                    // Check each section header
+                    sectionHeaders.forEach(header => {
+                        // Find the row that follows this header
+                        let nextSibling = header.nextElementSibling;
+                        let hasVisibleCards = false;
+
+                        // Look through rows until we hit the next section header or end
+                        while (nextSibling && !nextSibling.classList.contains('section-header')) {
+                            if (nextSibling.classList.contains('row')) {
+                                // Check if this row has any visible cards
+                                const visibleCards = Array.from(nextSibling.querySelectorAll('[class*="col-"]'))
+                                    .filter(col => col.style.display !== 'none');
+
+                                if (visibleCards.length > 0) {
+                                    hasVisibleCards = true;
+                                    anySectionHasResults = true;
+                                    break;
+                                }
+                            }
+                            nextSibling = nextSibling.nextElementSibling;
+                        }
+
+                        // Hide/show section header based on results
+                        header.style.display = hasVisibleCards ? '' : 'none';
+                    });
+
+                    // Show global "no results" message if nothing found
+                    if (!anySectionHasResults) {
+                        const messageClone = noResultsMessage.cloneNode(true);
+                        messageClone.classList.add('no-results-message');
+                        document.querySelector('#menuTabContent').appendChild(messageClone);
+                    }
+                } else {
+                    // When search is cleared, show all section headers
+                    document.querySelectorAll('.section-header').forEach(header => {
+                        header.style.display = '';
+                    });
+                }
+            });
+
+
+        });
+    </script>
 </body>
-</html> 
+</html>
+
