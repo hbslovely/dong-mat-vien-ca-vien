@@ -162,7 +162,6 @@
         .row {
             margin-left: -12px;
             margin-right: -12px;
-            margin-bottom: 15px;
         }
 
         #combo .card {
@@ -1661,6 +1660,16 @@
                     const searchValue = searchTerm.trim().toLowerCase();
                     let resultsFound = false;
 
+                    // Function to remove Vietnamese diacritics (accents)
+                    function removeAccents(str) {
+                        return str.normalize('NFD')
+                            .replace(/[\u0300-\u036f]/g, '') // Remove combining diacritical marks
+                            .replace(/đ/g, 'd').replace(/Đ/g, 'D'); // Replace Vietnamese Đ/đ
+                    }
+
+                    // Normalize the search term (remove accents)
+                    const normalizedSearchValue = removeAccents(searchValue);
+
                     // Show all tabs to search across all content
                     if (searchValue) {
                         document.querySelectorAll('.tab-pane').forEach(tab => {
@@ -1688,7 +1697,12 @@
 
                         const cardContent = cardTitle + ' ' + cardText + ' ' + ingredients;
 
-                        if (searchValue === '' || cardContent.includes(searchValue)) {
+                        // Normalize the card content (remove accents)
+                        const normalizedCardContent = removeAccents(cardContent);
+
+                        if (searchValue === '' ||
+                            cardContent.includes(searchValue) ||
+                            normalizedCardContent.includes(normalizedSearchValue)) {
                             card.closest('[class*="col-"]').style.display = '';
                             resultsFound = true;
                         } else {
